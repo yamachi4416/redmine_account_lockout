@@ -1,0 +1,9 @@
+ja:
+  field_lockout?: ロックアウト
+  field_lockout_failure_count: ログイン失敗回数
+  field_lockout_expired_date: ロック期限
+  account_lockout_tab: ロックアウト
+  account_lockout:
+    settings_title: ロックアウト設定
+    lockout_limit: ログイン試行回数
+    lockout_period_minutes: ロック期間 (分)

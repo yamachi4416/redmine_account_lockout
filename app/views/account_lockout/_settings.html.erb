@@ -1,0 +1,17 @@
+<h3><%= l(:settings_title, scope: [:account_lockout]) %></h3>
+<fieldset class="box tabular settings">
+  <p>
+    <%= label_tag('settings_lockout_limit',
+      l(:lockout_limit, scope: [:account_lockout])) %>
+    <%= text_field_tag 'settings[lockout_limit]',
+      @settings[:lockout_limit],
+      type: 'number' %>
+  </p>
+  <p>
+    <%= label_tag('settings_lockout_period_minutes',
+      l(:lockout_period_minutes, scope: [:account_lockout])) %>
+    <%= text_field_tag 'settings[lockout_period_minutes]',
+      @settings[:lockout_period_minutes],
+      type: 'number' %>
+  </p>
+</fieldset>

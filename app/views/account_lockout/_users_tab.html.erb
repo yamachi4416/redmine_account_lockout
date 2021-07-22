@@ -1,0 +1,13 @@
+<%= labelled_form_for @user,
+  url: { controller: 'users_account_lockout', action: 'reset', user_id: @user } do |f| %>
+  <div class="box tabular">
+    <p><%= f.check_box :lockout?, disabled: true %></p>
+    <p><%= f.text_field :lockout_failure_count, disabled: true %></p>
+    <p><%= f.text_field :lockout_expired_date,
+      disabled: true,
+      value: format_time(@user.lockout_expired_date) %></p>
+    <p>
+      <%= submit_tag l(:button_reset) %>
+    </p>
+  </div>
+<% end -%>

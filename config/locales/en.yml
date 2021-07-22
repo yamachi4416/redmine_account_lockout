@@ -1,0 +1,9 @@
+en:
+  field_lockout?: Lockout
+  field_lockout_failure_count: Login failure count
+  field_lockout_expired_date: Lockout expired date
+  account_lockout_tab: Lockout
+  account_lockout:
+    settings_title: Lockout settings
+    lockout_limit: Lockout count
+    lockout_period_minutes: Lockout period (min)
