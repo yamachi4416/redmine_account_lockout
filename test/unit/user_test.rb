@@ -5,6 +5,12 @@ class UserTest < ActiveSupport::TestCase
 
   def setup
     @jsmith = User.find(2)
+    @setting = Setting.plugin_account_lockout.dup
+    Setting.plugin_account_lockout[:lockout_limit] = '3'
+  end
+
+  def teardown
+    Setting.plugin_account_lockout = @setting
   end
 
   def test_pass_auth_failures_has_exceeded_the_limit_should_be_lockout

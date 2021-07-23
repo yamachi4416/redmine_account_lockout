@@ -5,7 +5,13 @@ class AccountControllerTest < Redmine::ControllerTest
 
   def setup
     @jsmith = User.find(2)
+    @setting = Setting.plugin_account_lockout.dup
     User.current = nil
+    Setting.plugin_account_lockout[:lockout_limit] = '3'
+  end
+
+  def teardown
+    Setting.plugin_account_lockout = @setting
   end
 
   def test_login_with_failures_has_exceeded_the_limit_should_be_lockout
