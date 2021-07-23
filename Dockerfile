@@ -14,7 +14,7 @@ RUN bundle install \
  && echo "  database: db/redmine.sqlite3" >> config/database.yml
 
 ARG PLUGIN_DIR
-COPY . ./plugins/%PLUGIN_DIR/
+COPY . ./plugins/$PLUGIN_DIR/
 
 RUN rake db:drop db:create db:migrate redmine:plugins:migrate RAILS_ENV=test
 
