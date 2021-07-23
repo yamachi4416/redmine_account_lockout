@@ -16,4 +16,4 @@ jobs:
         run: |
           PLUGIN_DIR=$(basename $(pwd))
           docker build -t redmine --build-arg REDMINE_VERSION=$REDMINE_VERSION --build-arg PLUGIN_DIR=$PLUGIN_DIR .
-          docker run -it --rm redmine rake redmine:plugins:test RAILS_ENV=test .
+          docker run --rm redmine rake redmine:plugins:test RAILS_ENV=test .
