@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+    pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        redmine: [4.0, 4.1, 4.2]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Redmine plugin test
+        env:
+          REDMINE_VERSION: ${{ matrix.redmine }}
+        run: |
+          PLUGIN_DIR=$(basename $(pwd))
+          docker build -t redmine --build-arg REDMINE_VERSION=$REDMINE_VERSION --build-arg PLUGIN_DIR=$PLUGIN_DIR .
+          docker run -it --rm redmine rake redmine:plugins:test RAILS_ENV=test .
