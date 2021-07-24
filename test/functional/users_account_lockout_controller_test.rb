@@ -13,7 +13,7 @@ class UsersAccountLockoutControllerTest < Redmine::ControllerTest
 
   def test_without_admin_should_reject
     @request.session[:user_id] = @dlopper.id
-    post :reset, :params => { :user_id => @jsmith }
+    patch :reset, :params => { :user_id => @jsmith }
 
     assert_response :forbidden
   end
@@ -23,7 +23,7 @@ class UsersAccountLockoutControllerTest < Redmine::ControllerTest
     assert @jsmith.lockout?
 
     @request.session[:user_id] = @dlopper.id
-    post :reset, :params => { :user_id => @jsmith }
+    patch :reset, :params => { :user_id => @jsmith }
 
     @jsmith.reload
     assert @jsmith.lockout?
@@ -34,7 +34,7 @@ class UsersAccountLockoutControllerTest < Redmine::ControllerTest
     assert @jsmith.lockout?
 
     @request.session[:user_id] = @admin.id
-    post :reset, :params => { :user_id => @jsmith }
+    patch :reset, :params => { :user_id => @jsmith }
 
     @jsmith.reload
     assert !@jsmith.lockout?

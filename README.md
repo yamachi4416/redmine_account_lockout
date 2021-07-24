@@ -31,7 +31,7 @@ Administration > Plugins > Account Lockout plugin > Configure
 | name | description |
 |:-----|:------------|
 | Lockout count | Set the number of login attempts to lock out |
-| Lockout period (min) | Sets the time, in minutes, to limit login when locked out. It is also added if the user attempts password authentication during the locked out period. |
+| Lockout period (min) | Set the login restriction period by password authentication at the time of lockout in minutes. It also applies if the user attempts password authentication during the lockout period. |
 
 ### Unlockout
 How to Unlockout is following

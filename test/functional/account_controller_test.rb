@@ -51,4 +51,37 @@ class AccountControllerTest < Redmine::ControllerTest
     )
     assert_response 302
   end
+
+  def test_post_lost_password_with_token_should_succeed
+    ActionMailer::Base.deliveries.clear
+    token = Token.create!(:action => 'recovery', :user => @jsmith)
+    post(
+      :lost_password,
+      :params => {
+        :token => token.value,
+        :new_password => 'newpass123',
+        :new_password_confirmation => 'newpass123'
+      }
+    )
+    assert_redirected_to '/login'
+    @jsmith.reload
+    assert @jsmith.check_password?('newpass123')
+  end
+
+  def test_post_lockedout_user_lost_password_with_token_should_succeed
+    ActionMailer::Base.deliveries.clear
+    @jsmith.update_columns(lockout_expired_date: 1.hours.since)
+    token = Token.create!(:action => 'recovery', :user => @jsmith)
+    post(
+      :lost_password,
+      :params => {
+        :token => token.value,
+        :new_password => 'newpass123',
+        :new_password_confirmation => 'newpass123'
+      }
+    )
+    assert_redirected_to '/login'
+    @jsmith.reload
+    assert @jsmith.check_password?('newpass123')
+  end
 end
