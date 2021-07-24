@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        redmine: [4.0, 4.1, 4.2]
+        redmine: ['4.0', '4.1', '4.2']
     steps:
       - uses: actions/checkout@v1
       - name: Redmine plugin test
