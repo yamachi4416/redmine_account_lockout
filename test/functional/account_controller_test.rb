@@ -39,7 +39,7 @@ class AccountControllerTest < Redmine::ControllerTest
     assert_select 'div.flash.error', :text => /Invalid user or password/
   end
 
-  def test_login_with_after_expired_date_login_should_succeed
+  def test_login_with_after_expired_date_should_succeed
     limit_count = Setting.plugin_account_lockout[:lockout_limit].to_i
     @jsmith.update_columns(lockout_expired_date: 1.second.ago)
     post(

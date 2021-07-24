@@ -11,7 +11,8 @@ WORKDIR /usr/src/redmine
 RUN bundle install \
  && echo "test:" > config/database.yml \
  && echo "  adapter: sqlite3" >> config/database.yml \
- && echo "  database: db/redmine.sqlite3" >> config/database.yml
+ && echo "  database: db/redmine.sqlite3" >> config/database.yml \
+ && echo "config.log_level = :fatal" >> config/additional_environment.rb
 
 ARG PLUGIN_DIR
 COPY . ./plugins/$PLUGIN_DIR/
