@@ -23,11 +23,26 @@ bundle exec rake redmine:plugins:migrate NAME=account_lockout VERSION=0 RAILS_EN
 
 3. Restart Redmine.
 
-## Setting
+## Usage
 
+### Setting
 Administration > Plugins > Account Lockout plugin > Configure
 
 | name | description |
 |:-----|:------------|
 | Lockout count | Set the number of login attempts to lock out |
 | Lockout period (min) | Sets the time, in minutes, to limit login when locked out. It is also added if the user attempts password authentication during the locked out period. |
+
+### Unlockout
+How to Unlockout is following
+
+* Reset password
+  1. Administration > Users.
+  2. Select the user to display the user's edit page.
+  3. Reset the user's password.
+
+* Unlockout
+  1. Administration > Users.
+  2. Select the user to display the user's edit page.
+  3. Select Lockout tab.
+  4. Click Reset button.
